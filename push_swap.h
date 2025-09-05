@@ -1,40 +1,34 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 19:27:35 by vinpache          #+#    #+#             */
-/*   Updated: 2025/09/04 19:27:37 by vinpache         ###   ########.fr       */
-/*                                                                            */
+/* */
+/* :::      ::::::::   */
+/* push_swap.h                                        :+:      :+:    :+:   */
+/* +:+ +:+         +:+     */
+/* By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
+/* +#+#+#+#+#+   +#+           */
+/* Created: 2025/09/04 19:27:35 by vinpache          #+#    #+#             */
+/* Updated: 2025/09/05 16:27:00 by vinpache         ###   ########.fr       */
+/* */
 /* ************************************************************************** */
-
-/* Em push_swap.h */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-// Incluindo a libft, que nos dá acesso a todas as suas funções
 # include "libft/libft.h"
-
-// Includes padrão
 # include <stdlib.h>
 # include <unistd.h>
 
-// Estrutura da nossa pilha
 typedef struct s_push
 {
 	int				number;
 	int				index;
 	struct s_push	*next;
-} t_push; // <-- O PONTO E VÍRGULA FALTANDO ESTAVA AQUI
+}					t_push;
 
-// --- Funções de Parsing e Validação (src/utils_3.c) ---
-int					validate_and_convert(const char *str);
+/* --- Funções de Parsing e Validação --- */
+int					parse_number(const char *str);
 void				check_rep(t_push **a);
 
-// --- Operações (src/do_xx.c) ---
+/* --- Operações --- */
 void				sa(t_push **list_a);
 void				sb(t_push **list_b);
 void				ss(t_push **list_a, t_push **list_b);
@@ -47,16 +41,15 @@ void				rra(t_push **list_a);
 void				rrb(t_push **list_b);
 void				rrr(t_push **list_a, t_push **list_b);
 
-// --- Algoritmo de Sort (sort/) ---
+/* --- Algoritmo de Sort --- */
 void				sort(t_push **a, t_push **b, int count);
 void				do_sort_2(t_push **a);
 void				do_sort_3(t_push **a);
 void				do_sort_5(t_push **a, t_push **b, int size);
-void				do_sort_100(t_push **a, t_push **b);
-void				do_sort_500(t_push **a, t_push **b);
+void				do_sort_big(t_push **a, t_push **b, int chunk_size);
 void				do_sort_pa(t_push **a, t_push **b);
 
-// --- Funções Utilitárias (src/utils_*.c) ---
+/* --- Funções Utilitárias --- */
 void				do_error(void);
 void				do_index(t_push **a, int size);
 int					is_sorted(t_push **a);
@@ -69,3 +62,4 @@ int					min_pos(t_push **a, int med, int i);
 int					max_pos(t_push **a, int med, int i);
 
 #endif
+

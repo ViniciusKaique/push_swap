@@ -54,7 +54,7 @@ static int	fill_stack_from_args(char **args, t_push **a)
 	i = 0;
 	while (args[i])
 	{
-		num = validate_and_convert(args[i]);
+		num = parse_number(args[i]);
 		new_node = malloc(sizeof(t_push));
 		if (!new_node)
 			do_error();

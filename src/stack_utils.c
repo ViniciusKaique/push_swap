@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaybaz <aaybaz@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:28:35 by aaybaz            #+#    #+#             */
-/*   Updated: 2023/05/05 20:09:56 by aaybaz           ###   ########.fr       */
+/*   Updated: 2025/09/05 16:54:49 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,20 @@ int	maxindex(t_push **a)
 		p = p->next;
 	}
 	return (max_index);
+}
+int	is_sorted(t_push **a)
+{
+	t_push	*tmp;
+
+	if (!a || !*a)
+		return (1);
+	tmp = *a;
+	while (tmp->next != NULL)
+	{
+		if (tmp->number < tmp->next->number)
+			tmp = tmp->next;
+		else
+			return (0);
+	}
+	return (1);
 }

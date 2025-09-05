@@ -104,20 +104,3 @@ void	lst_add_back(t_push **a, t_push *new_node)
 	last->next = new_node;
 }
 
-int	is_sorted(t_push **a)
-{
-	t_push	*tmp;
-
-	if (!a || !*a)
-		return (1);
-	tmp = *a;
-	while (tmp->next != NULL)
-	{
-		if (tmp->number < tmp->next->number)
-			tmp = tmp->next;
-		else
-			return (0);
-	}
-	return (1);
-}
-
