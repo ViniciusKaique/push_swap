@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 10:39:39 by vinpache          #+#    #+#             */
-/*   Updated: 2025/09/06 10:39:42 by vinpache         ###   ########.fr       */
+/*   Created: 2025/09/06 11:10:45 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/06 11:10:47 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,55 +62,44 @@ static int	fill_stack_from_args(char **args, t_push **a)
 	}
 	return (i);
 }
-
-static char	*join_args(int argc, char **argv)
+static int	parse_input(int argc, char **argv, t_push **a)
 {
-	char	*full_str;
-	char	*tmp;
 	int		i;
+	int		total_size;
+	char	**split_args;
 
-	full_str = ft_strdup("");
 	i = 1;
+	total_size = 0;
 	while (i < argc)
 	{
-		tmp = ft_strjoin(full_str, argv[i]);
-		free(full_str);
-		if (!tmp)
+		split_args = ft_split(argv[i], ' ');
+		if (!split_args || !*split_args)
+		{
+			free_split(split_args);
 			exit_error();
-		full_str = ft_strjoin(tmp, " ");
-		free(tmp);
-		if (!full_str)
-			exit_error();
+		}
+		total_size += fill_stack_from_args(split_args, a);
+		free_split(split_args);
 		i++;
 	}
-	return (full_str);
+	return (total_size);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_push	*a;
 	t_push	*b;
-	char	**args;
-	char	*joined_args;
-	int		size;
+	int		total_size;
 
 	a = NULL;
 	b = NULL;
 	if (argc < 2)
 		exit_error();
-	joined_args = join_args(argc, argv);
-	args = ft_split(joined_args, ' ');
-	free(joined_args);
-	if (!args || !*args)
-	{
-		free_split(args);
-		exit_error();
-	}
-	size = fill_stack_from_args(args, &a);
+	total_size = parse_input(argc, argv, &a);
 	check_rep(&a);
-	free_split(args);
 	if (!is_sorted(&a))
-		sort(&a, &b, size);
+		sort(&a, &b, total_size);
 	free_stack(&a);
 	return (0);
 }
+

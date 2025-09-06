@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/05 18:29:23 by aaybaz            #+#    #+#              #
-#    Updated: 2025/09/06 10:26:32 by vinpache         ###   ########.fr        #
+#    Created: 2025/09/06 11:09:50 by vinpache          #+#    #+#              #
+#    Updated: 2025/09/06 11:13:44 by vinpache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,11 @@ NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
-# --- Libft ---
 LIBFT_DIR   = ./libft
 LIBFT_A     = $(LIBFT_DIR)/libft.a
 LIBFT_INC   = -I $(LIBFT_DIR)
 LIBFT_LNK   = -L $(LIBFT_DIR) -lft
 
-# --- Push_swap Sources ---
-# ATUALIZADO: Lista de fontes com a nova organização de arquivos semântica.
 SRCS        = push_swap.c \
               src/swap.c \
               src/push.c \
@@ -35,7 +32,6 @@ SRCS        = push_swap.c \
 
 OBJS        = $(SRCS:.c=.o)
 
-# --- Rules ---
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT_A)

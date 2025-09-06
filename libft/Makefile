@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/05 17:10:22 by vinpache          #+#    #+#              #
-#    Updated: 2025/09/05 17:11:06 by vinpache         ###   ########.fr        #
+#    Created: 2025/09/06 11:09:32 by vinpache          #+#    #+#              #
+#    Updated: 2025/09/06 11:09:44 by vinpache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 AR = ar rcs
 
-# ATUALIZADO: Apenas as fontes necessárias para o push_swap
 SRC	=	ft_atol.c		\
 		ft_bzero.c		\
 		ft_calloc.c		\
@@ -26,7 +25,6 @@ SRC	=	ft_atol.c		\
 		ft_memset.c		\
 		ft_split.c		\
 		ft_strdup.c		\
-		ft_strjoin.c	\
 		ft_strlcpy.c	\
 		ft_strlen.c		\
 		ft_substr.c

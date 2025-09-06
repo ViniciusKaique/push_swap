@@ -1,18 +1,17 @@
 /* ************************************************************************** */
-/* */
-/* :::      ::::::::   */
-/* do_rrr.c                                           :+:      :+:    :+:   */
-/* +:+ +:+         +:+     */
-/* By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
-/* +#+#+#+#+#+   +#+           */
-/* Created: 2023/05/05 18:28:15 by aaybaz            #+#    #+#             */
-/* Updated: 2025/09/04 20:03:00 by vinpache         ###   ########.fr       */
-/* */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate_rev.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/06 11:11:27 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/06 11:11:36 by vinpache         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// Lógica de reverse rotate, agora separada
 static void	reverse_rotate(t_push **stack)
 {
 	t_push	*last;
