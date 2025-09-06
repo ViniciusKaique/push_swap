@@ -1,24 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_min.c                                         :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaybaz <aaybaz@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 18:27:26 by aaybaz            #+#    #+#             */
-/*   Updated: 2023/05/09 16:02:05 by aaybaz           ###   ########.fr       */
+/*   Created: 2025/09/06 10:29:01 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/06 10:47:03 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	do_sort_2(t_push **a)
+void	sort(t_push **a, t_push **b, int size)
+{
+	if (size >= 2 && size <= 5)
+	{
+		if (size == 2)
+			sort_2(a);
+		else if (size == 3)
+			sort_3(a);
+		else if (size == 4 || size == 5)
+			sort_5(a, b, size);
+	}
+	if (size >= 6)
+	{
+		set_index(a, size);
+		if (size <= 100)
+			sort_big(a, b, 15);
+		else
+			sort_big(a, b, 30);
+	}
+}
+void	sort_big(t_push **a, t_push **b, int chunk_size)
+{
+	int	i;
+
+	i = 0;
+	while ((*a) != NULL)
+	{
+		if (i > 0 && (*a)->index < i)
+		{
+			pb(a, b);
+			rb(b);
+			i++;
+		}
+		else if ((*a)->index < i + chunk_size)
+		{
+			pb(a, b);
+			i++;
+		}
+		else if ((*a)->index >= i + chunk_size)
+			ra(a);
+	}
+	sort_pa(a, b);
+}
+
+void	sort_2(t_push **a)
 {
 	if ((*a)->next->number < (*a)->number)
 		sa(a);
 }
 
-void	do_sort_3(t_push **a)
+void	sort_3(t_push **a)
 {	
 	if ((*a)->number == maxnum(a))
 	{
@@ -37,7 +81,7 @@ void	do_sort_3(t_push **a)
 		rra(a);
 }
 
-void	do_sort_5(t_push **a, t_push **b, int size)
+void	sort_5(t_push **a, t_push **b, int size)
 {
 	int	i;
 
@@ -59,3 +103,4 @@ void	do_sort_5(t_push **a, t_push **b, int size)
 	while ((*b))
 		pa(a, b);
 }
+

@@ -58,7 +58,7 @@ int	min_pos(t_push **a, int min, int size)
 		return (1);
 }
 
-void	do_sort_pa(t_push **a, t_push **b)
+void	sort_pa(t_push **a, t_push **b)
 {
 	while ((*b) != NULL)
 	{

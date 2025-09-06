@@ -43,15 +43,15 @@ void				rrr(t_push **list_a, t_push **list_b);
 
 /* --- Algoritmo de Sort --- */
 void				sort(t_push **a, t_push **b, int count);
-void				do_sort_2(t_push **a);
-void				do_sort_3(t_push **a);
-void				do_sort_5(t_push **a, t_push **b, int size);
-void				do_sort_big(t_push **a, t_push **b, int chunk_size);
-void				do_sort_pa(t_push **a, t_push **b);
+void				sort_2(t_push **a);
+void				sort_3(t_push **a);
+void				sort_5(t_push **a, t_push **b, int size);
+void				sort_big(t_push **a, t_push **b, int chunk_size);
+void				sort_pa(t_push **a, t_push **b);
 
 /* --- Funções Utilitárias --- */
-void				do_error(void);
-void				do_index(t_push **a, int size);
+void				exit_error(void);
+void				set_index(t_push **a, int size);
 int					is_sorted(t_push **a);
 int					lst_size(t_push **a);
 void				lst_add_back(t_push **a, t_push *new_node);

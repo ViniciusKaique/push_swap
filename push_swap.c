@@ -1,18 +1,17 @@
 /* ************************************************************************** */
-/* */
-/* :::      ::::::::   */
-/* push_swap.c                                        :+:      :+:    :+:   */
-/* +:+ +:+         +:+     */
-/* By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
-/* +#+#+#+#+#+   +#+           */
-/* Created: 2023/05/05 18:26:51 by aaybaz            #+#    #+#             */
-/* Updated: 2025/09/04 19:50:00 by vinpache         ###   ########.fr       */
-/* */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/06 10:39:39 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/06 10:39:42 by vinpache         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Função auxiliar para liberar a memória alocada por ft_split
 static void	free_split(char **args)
 {
 	int	i;
@@ -28,7 +27,6 @@ static void	free_split(char **args)
 	free(args);
 }
 
-// Função auxiliar para liberar todos os nós da pilha
 static void	free_stack(t_push **stack)
 {
 	t_push	*current;
@@ -44,7 +42,6 @@ static void	free_stack(t_push **stack)
 	*stack = NULL;
 }
 
-// Função que preenche a pilha 'a' a partir dos argumentos validados
 static int	fill_stack_from_args(char **args, t_push **a)
 {
 	int		i;
@@ -57,16 +54,15 @@ static int	fill_stack_from_args(char **args, t_push **a)
 		num = parse_number(args[i]);
 		new_node = malloc(sizeof(t_push));
 		if (!new_node)
-			do_error();
+			exit_error();
 		new_node->number = num;
 		new_node->next = NULL;
 		lst_add_back(a, new_node);
 		i++;
 	}
-	return (i); // Retorna a quantidade de números adicionados
+	return (i);
 }
 
-// Nova função que junta todos os argumentos em uma string única
 static char	*join_args(int argc, char **argv)
 {
 	char	*full_str;
@@ -80,11 +76,11 @@ static char	*join_args(int argc, char **argv)
 		tmp = ft_strjoin(full_str, argv[i]);
 		free(full_str);
 		if (!tmp)
-			do_error();
+			exit_error();
 		full_str = ft_strjoin(tmp, " ");
 		free(tmp);
 		if (!full_str)
-			do_error();
+			exit_error();
 		i++;
 	}
 	return (full_str);
@@ -101,14 +97,14 @@ int	main(int argc, char *argv[])
 	a = NULL;
 	b = NULL;
 	if (argc < 2)
-		return (0);
+		exit_error();
 	joined_args = join_args(argc, argv);
 	args = ft_split(joined_args, ' ');
 	free(joined_args);
-	if (!args || !*args) // Se não houver argumentos após o split
+	if (!args || !*args)
 	{
 		free_split(args);
-		do_error(); // CORREÇÃO: Chamar do_error() em vez de sair silenciosamente
+		exit_error();
 	}
 	size = fill_stack_from_args(args, &a);
 	check_rep(&a);
@@ -118,4 +114,3 @@ int	main(int argc, char *argv[])
 	free_stack(&a);
 	return (0);
 }
-

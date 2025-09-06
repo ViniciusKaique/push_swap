@@ -6,7 +6,7 @@
 #    By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/05 18:29:23 by aaybaz            #+#    #+#              #
-#    Updated: 2025/09/05 17:13:50 by vinpache         ###   ########.fr        #
+#    Updated: 2025/09/06 10:26:32 by vinpache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,7 @@ SRCS        = push_swap.c \
               src/stack_utils.c \
               src/array_utils.c \
               src/sort_utils.c \
-              sort/sort_max.c \
-              sort/sort_min.c \
-              sort/sort.c
+              src/sort.c
 
 OBJS        = $(SRCS:.c=.o)
 
