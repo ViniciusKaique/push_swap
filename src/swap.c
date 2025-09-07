@@ -12,18 +12,20 @@
 
 #include "../push_swap.h"
 
-// Lógica de swap, agora separada
-static void	swap(t_push **stack)
+static void swap(t_push **stack)
 {
-	int	first;
-	int	second;
+t_push *first;
+t_push *second;
 
 	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	first = (*stack)->next->number;
-	second = (*stack)->number;
-	(*stack)->number = first;
-	(*stack)->next->number = second;
+			return;
+
+		first = *stack;          // O primeiro nó
+		second = first->next;    // O segundo nó
+
+		first->next = second->next; // O primeiro aponta para o terceiro
+		second->next = first;       // O segundo aponta para o primeiro
+		*stack = second;            // A cabeça da lista agora é o segundo nó
 }
 
 void	sa(t_push **list_a)
