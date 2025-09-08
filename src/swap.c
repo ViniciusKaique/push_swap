@@ -1,46 +1,46 @@
 /* ************************************************************************** */
-/* */
-/* :::      ::::::::   */
-/* do_ss.c                                            :+:      :+:    :+:   */
-/* +:+ +:+         +:+     */
-/* By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
-/* +#+#+#+#+#+   +#+           */
-/* Created: 2023/05/05 18:28:28 by aaybaz            #+#    #+#             */
-/* Updated: 2025/09/04 20:01:00 by vinpache         ###   ########.fr       */
-/* */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/08 13:36:37 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/08 13:36:39 by vinpache         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void swap(t_push **stack)
+static void swap(t_list **stack)
 {
-t_push *first;
-t_push *second;
+t_list *first;
+t_list *second;
 
 	if (!stack || !*stack || !(*stack)->next)
 			return;
 
-		first = *stack;          // O primeiro nó
-		second = first->next;    // O segundo nó
+		first = *stack;          
+		second = first->next;    
 
-		first->next = second->next; // O primeiro aponta para o terceiro
-		second->next = first;       // O segundo aponta para o primeiro
-		*stack = second;            // A cabeça da lista agora é o segundo nó
+		first->next = second->next; 
+		second->next = first;       
+		*stack = second;            
 }
 
-void	sa(t_push **list_a)
+void	sa(t_list **list_a)
 {
 	swap(list_a);
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_push **list_b)
+void	sb(t_list **list_b)
 {
 	swap(list_b);
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_push **list_a, t_push **list_b)
+void	ss(t_list **list_a, t_list **list_b)
 {
 	swap(list_a);
 	swap(list_b);

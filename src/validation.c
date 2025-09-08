@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 11:12:11 by vinpache          #+#    #+#             */
-/*   Updated: 2025/09/06 11:12:26 by vinpache         ###   ########.fr       */
+/*   Created: 2025/09/08 13:36:26 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/08 13:36:28 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../push_swap.h"
 
 void	exit_error(void)
@@ -43,10 +42,10 @@ int	parse_number(const char *str)
 	return ((int)num);
 }
 
-void	check_rep(t_push **a)
+void	check_rep(t_list **a)
 {
-	t_push	*tmp1;
-	t_push	*tmp2;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
 	tmp1 = *a;
 	while (tmp1)

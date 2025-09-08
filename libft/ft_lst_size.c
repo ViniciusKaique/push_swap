@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_lst_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 13:37:23 by vinpache          #+#    #+#             */
-/*   Updated: 2025/09/08 13:37:25 by vinpache         ###   ########.fr       */
+/*   Created: 2025/09/08 11:54:59 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/08 12:26:49 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	pa(t_list **list_a, t_list **list_b)
+int	ft_lst_size(t_list **list)
 {
-	t_list	*tmp;
+	int i;
+	t_list *temp;
 
-	tmp = *list_b;
-	*list_b = tmp->next;
-	tmp->next = *list_a;
-	*list_a = tmp;
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_list **list_a, t_list **list_b)
-{
-	t_list	*tmp;
-
-	tmp = *list_a;
-	*list_a = tmp->next;
-	tmp->next = *list_b;
-	*list_b = tmp;
-	write(1, "pb\n", 3);
+	i = 0;
+	temp = *list;
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }

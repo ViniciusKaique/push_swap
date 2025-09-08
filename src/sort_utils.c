@@ -5,16 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 11:11:50 by vinpache          #+#    #+#             */
-/*   Updated: 2025/09/06 11:11:52 by vinpache         ###   ########.fr       */
+/*   Created: 2025/09/08 13:37:05 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/08 13:37:06 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	max_pos(t_push **b, int max_index, int size)
+void	set_index(t_list **a)
 {
-	t_push	*p;
+	t_list	*current;
+	t_list	*comparer;
+	int		index;
+
+	current = *a;
+	while (current)
+	{
+		comparer = *a;
+		index = 0;
+		while (comparer)
+		{
+			if (current->number > comparer->number)
+				index++;
+			comparer = comparer->next;
+		}
+		current->index = index;
+		current = current->next;
+	}
+}
+
+int	max_pos(t_list **b, int max_index, int size)
+{
+	t_list	*p;
 	int		index;
 	int		found;
 
@@ -35,9 +57,9 @@ int	max_pos(t_push **b, int max_index, int size)
 		return (1);
 }
 
-int	min_pos(t_push **a, int min, int size)
+int	min_pos(t_list **a, int min, int size)
 {
-	t_push	*p;
+	t_list	*p;
 	int		min_index;
 	int		found;
 
@@ -58,49 +80,24 @@ int	min_pos(t_push **a, int min, int size)
 		return (1);
 }
 
-void	sort_pa(t_push **a, t_push **b)
+void	sort_pa(t_list **a, t_list **b)
 {
-	while ((*b) != NULL)
+	while (*b != NULL)
 	{
-		if ((*b)->index != maxindex(b) && !max_pos(b, maxindex(b), lst_size(b)))
-			rb(b);
-		else if ((*b)->index != maxindex(b)
-			&& max_pos(b, maxindex(b), lst_size(b)))
-			rrb(b);
-		else if ((*b)->index == maxindex(b))
+		int max = maxindex(b);
+		int size_b = ft_lst_size(b);
+
+		// se o maior não está no topo, gira 'b'
+		if ((*b)->index != max)
+		{
+			if (!max_pos(b, max, size_b))
+				rb(b);
+			else
+				rrb(b);
+		}
+		else
 			pa(a, b);
 	}
 }
 
-int	lst_size(t_push **list)
-{
-	int		i;
-	t_push	*temp;
-
-	i = 0;
-	temp = *list;
-	while (temp != NULL)
-	{
-		temp = temp->next;
-		i++;
-	}
-	return (i);
-}
-
-void	lst_add_back(t_push **a, t_push *new_node)
-{
-	t_push	*last;
-
-	if (!new_node)
-		return ;
-	if (*a == NULL)
-	{
-		*a = new_node;
-		return ;
-	}
-	last = *a;
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new_node;
-}
 

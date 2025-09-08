@@ -5,21 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 11:12:03 by vinpache          #+#    #+#             */
-/*   Updated: 2025/09/06 11:12:05 by vinpache         ###   ########.fr       */
+/*   Created: 2025/09/08 13:36:51 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/08 13:36:53 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	minnum(t_push **a)
+int	minnum(t_list **a)
 {
 	int		min;
-	t_push	*p;
+	t_list	*p;
 
 	min = (*a)->number;
-	p = *a;
-	p = p->next;
+	p = (*a)->next;
 	while (p != NULL)
 	{
 		if (p->number < min)
@@ -29,14 +28,13 @@ int	minnum(t_push **a)
 	return (min);
 }
 
-int	maxnum(t_push **a)
+int	maxnum(t_list **a)
 {
 	int		max;
-	t_push	*p;
+	t_list	*p;
 
 	max = (*a)->number;
-	p = *a;
-	p = p->next;
+	p = (*a)->next;
 	while (p != NULL)
 	{
 		if (p->number > max)
@@ -46,10 +44,10 @@ int	maxnum(t_push **a)
 	return (max);
 }
 
-int	maxindex(t_push **a)
+int	maxindex(t_list **a)
 {
 	int		max_index;
-	t_push	*p;
+	t_list	*p;
 
 	p = *a;
 	max_index = p->index;
@@ -62,19 +60,17 @@ int	maxindex(t_push **a)
 	}
 	return (max_index);
 }
-int	is_sorted(t_push **a)
-{
-	t_push	*tmp;
 
-	if (!a || !*a)
-		return (1);
+int	is_sorted(t_list **a)
+{
+	t_list	*tmp;
+
 	tmp = *a;
-	while (tmp->next != NULL)
+	while (tmp->next)
 	{
-		if (tmp->number < tmp->next->number)
-			tmp = tmp->next;
-		else
+		if (tmp->number > tmp->next->number)
 			return (0);
+		tmp = tmp->next;
 	}
 	return (1);
 }

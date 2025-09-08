@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vinpache <vinpache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 11:10:45 by vinpache          #+#    #+#             */
-/*   Updated: 2025/09/06 11:10:47 by vinpache         ###   ########.fr       */
+/*   Created: 2025/09/08 13:39:29 by vinpache          #+#    #+#             */
+/*   Updated: 2025/09/08 13:39:30 by vinpache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static void	free_split(char **args)
 	free(args);
 }
 
-static void	free_stack(t_push **stack)
+static void	free_stack(t_list **stack)
 {
-	t_push	*current;
-	t_push	*tmp;
+	t_list	*current;
+	t_list	*tmp;
 
 	current = *stack;
 	while (current != NULL)
@@ -42,27 +42,27 @@ static void	free_stack(t_push **stack)
 	*stack = NULL;
 }
 
-static int	fill_stack_from_args(char **args, t_push **a)
+static int	fill_stack_from_args(char **args, t_list **a)
 {
 	int		i;
 	int		num;
-	t_push	*new_node;
+	t_list	*new_node;
 
 	i = 0;
 	while (args[i])
 	{
 		num = parse_number(args[i]);
-		new_node = malloc(sizeof(t_push));
+		new_node = malloc(sizeof(t_list));
 		if (!new_node)
 			exit_error();
 		new_node->number = num;
 		new_node->next = NULL;
-		lst_add_back(a, new_node);
+		ft_lst_add_back(a, new_node);
 		i++;
 	}
 	return (i);
 }
-static int	parse_input(int argc, char **argv, t_push **a)
+static int	parse_input(int argc, char **argv, t_list **a)
 {
 	int		i;
 	int		total_size;
@@ -87,14 +87,14 @@ static int	parse_input(int argc, char **argv, t_push **a)
 
 int	main(int argc, char *argv[])
 {
-	t_push	*a;
-	t_push	*b;
+	t_list	*a;
+	t_list	*b;
 	int		total_size;
 
 	a = NULL;
 	b = NULL;
 	if (argc < 2)
-		exit_error();
+		return(0);
 	total_size = parse_input(argc, argv, &a);
 	check_rep(&a);
 	if (!is_sorted(&a))
